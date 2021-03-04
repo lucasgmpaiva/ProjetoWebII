@@ -20,32 +20,36 @@ public class ConsumeAPI {
 		this.restTemplate = new RestTemplate();
 	}
 	
+	// Movies' endpoints
+	
 	public Movie findMovieById(Long id) {
 		return restTemplate.getForObject(apiRoot + "movie/" + id + "?" +  apiKey, Movie.class);
-	}
-	
-	public TVSeries findSeriesById(Long id) {
-		return restTemplate.getForObject(apiRoot + "tv/" + id + "?" +  apiKey, TVSeries.class);
 	}
 	
 	public MovieSet findMostPopularMovies() {
 		return restTemplate.getForObject(apiRoot + "movie/popular" + "?" +  apiKey, MovieSet.class);
 	}
 	
-	public TVSeriesSet findMostPopularSeries() {
-		return restTemplate.getForObject(apiRoot + "tv/popular" + "?" +  apiKey, TVSeriesSet.class);
-	}
-	
 	public MovieSet findTopRatedMovies() {
 		return restTemplate.getForObject(apiRoot + "movie/top_rated" + "?" +  apiKey, MovieSet.class);
 	}
 	
-	public TVSeriesSet findTopRatedSeries() {
-		return restTemplate.getForObject(apiRoot + "tv/top_rated" + "?" +  apiKey, TVSeriesSet.class);
-	}
-	
 	public MovieSet findMovieBySearch(String query) {
 		return restTemplate.getForObject(apiRoot + "search/movie?" + apiKey + "&query=" + query, MovieSet.class);
+	}
+	
+	// TVSeries' endpoints
+	
+	public TVSeries findSeriesById(Long id) {
+		return restTemplate.getForObject(apiRoot + "tv/" + id + "?" +  apiKey, TVSeries.class);
+	}
+	
+	public TVSeriesSet findMostPopularSeries() {
+		return restTemplate.getForObject(apiRoot + "tv/popular" + "?" +  apiKey, TVSeriesSet.class);
+	}
+	
+	public TVSeriesSet findTopRatedSeries() {
+		return restTemplate.getForObject(apiRoot + "tv/top_rated" + "?" +  apiKey, TVSeriesSet.class);
 	}
 	
 	public TVSeriesSet findSeriesBySearch(String query) {
