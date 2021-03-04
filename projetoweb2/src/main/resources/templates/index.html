@@ -6,16 +6,39 @@
 	</head>
 	<body>
 		<h1>Projeto da Disciplina Desenvolvimento De Sistemas Web II</h1>
-			<label>Search Movie By Id:</label>
-			<input type="text" id="idMovie" value="Movie Id"/>
-			<a href='' onclick="this.href='/movie/'+document.getElementById('idMovie').value">Search</a>
-			<br>
-			<label>Search TV Series By Id:</label>
-			<input type="text" id="idSeries" value="TV Series Id"/>
-			<a href='' onclick="this.href='/series/'+document.getElementById('idSeries').value">Search</a>
+		<label>Search Movie By Id:</label>
+		<input type="text" id="idMovie"/>
+		<a href='' onclick="this.href='/movie/'+document.getElementById('idMovie').value">Search</a>
+		<br>
+		<br>
+		<label>Search TV Series By Id:</label>
+		<input type="text" id="idSeries"/>
+		<a href='' onclick="this.href='/series/'+document.getElementById('idSeries').value">Search</a>
+		<br>
+		<br>
+		<label>Search Movie:</label>
+		<input type="text" id="queryMovie"/>
+		<a href='' onclick="this.href='/movie/search/'+document.getElementById('queryMovie').value">Search</a>
+		<br>
+		<br>
+		<label>Search TV Series:</label>
+		<input type="text" id="querySeries"/>
+		<a href='' onclick="this.href='/series/search/'+document.getElementById('querySeries').value">Search</a>
+		<br>
+		<br>
 		<br>
 		<a href = "/series/popular">Show Most Popular TV Series</a>
 		<br>
+		<br>
+		<br>
 		<a href = "/movie/popular">Show Most Popular Movies</a>
+		<br>
+		<br>
+		<br>
+		<a href = "/series/top">Show Top Rated TV Series</a>
+		<br>
+		<br>
+		<br>
+		<a href = "/movie/top">Show Top Rated TV Series</a>
 	</body>
 </html>

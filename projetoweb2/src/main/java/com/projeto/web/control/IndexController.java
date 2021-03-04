@@ -63,10 +63,24 @@ public class IndexController {
 		  return "index";
 	  }
 	  
+	  @GetMapping("/movie/search/{query}")
+	  public String getMovieBySearch(@PathVariable(value = "query") String query) {
+		  MovieSet movies = consumeAPI.findMovieBySearch(query);
+		  logger.info(Arrays.asList(movies.getResults()).toString());
+		  return "index";
+	  }
+	  
 	  @GetMapping("/tv/{id}")
 	  public String getSeriesById(@PathVariable(value = "id") Long id) {
 		  TVSeries tvSeries = consumeAPI.findSeriesById(id);
 		  logger.info(tvSeries.toString());
+		  return "index";
+	  }
+	  
+	  @GetMapping("/tv/search/{query}")
+	  public String getSeriesBySearch(@PathVariable(value = "query") String query) {
+		  TVSeriesSet series = consumeAPI.findSeriesBySearch(query);
+		  logger.info(Arrays.asList(series.getResults()).toString());
 		  return "index";
 	  }
 	 
