@@ -1,52 +1,74 @@
 package com.projeto.web.control;
 
 import java.util.Arrays;
-import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.projeto.web.model.Movie;
+import com.projeto.web.model.MovieSet;
 import com.projeto.web.model.TVSeries;
+import com.projeto.web.model.TVSeriesSet;
+import com.projeto.web.utils.ConsumeAPI;
 
-@RestController
+@Controller
 public class IndexController {
 	
-	@Autowired
-	private RestTemplate restTemplate;
+	private ConsumeAPI consumeAPI = new ConsumeAPI();
 	
-	private String apiRoot = "https://api.themoviedb.org/3/";
-	private String apiKey = "api_key=94bf8f41c148b47ddb8476bf39089b7d";
+	Logger logger = LoggerFactory.getLogger(IndexController.class);
 	
-	/*
-	 * @RequestMapping("/") public String index() { return "index.html"; }
-	 */
+	@RequestMapping("/")
+	public String index() {
+		return "index"; 
+	}
+	 
 	
 	@GetMapping("/movie/popular")
-	public List<Movie> getPopularMovies() {
-		Movie[] popularMovies = restTemplate.getForObject(apiRoot + "movie/popular" + "?" +  apiKey, Movie[].class);
-		return Arrays.asList(popularMovies);
+	public String getPopularMovies() {
+		MovieSet popularMovies = consumeAPI.findMostPopularMovies();
+		logger.info(Arrays.asList(popularMovies.getResults()).toString());
+		return "index";
 	}
 	
-	@GetMapping("/series/popular")
-	public List<TVSeries> getPopularSeries() {
-		TVSeries[] popularSeries = restTemplate.getForObject(apiRoot + "movie/popular" + "?" +  apiKey, TVSeries[].class);
-		return Arrays.asList(popularSeries);
-	}
-	
-	@GetMapping("/movie/{id}")
-	public Movie getMovieById(@PathVariable(value = "id") Long id) {
-		Movie movie = restTemplate.getForObject(apiRoot + "movie/" + id + "?" +  apiKey, Movie.class);
-		return movie;
-	}
-	
-	@GetMapping("/series/{id}")
-	public TVSeries getSerieById(@PathVariable(value = "id") Long id) {
-		TVSeries tVSeries = restTemplate.getForObject(apiRoot + "tv/" + id + "?" +  apiKey, TVSeries.class);
-		return tVSeries;
-	}
+	  @GetMapping("/series/popular")
+	  public String getPopularSeries() {
+		  TVSeriesSet popularSeries = consumeAPI.findMostPopularSeries();
+		  logger.info(Arrays.asList(popularSeries.getResults()).toString());
+		  return "index";
+	  }
+	  
+	  @GetMapping("/movie/top")
+	  public String getTopRatedMovies() {
+		  MovieSet topRatedMovies = consumeAPI.findTopRatedMovies();
+		  logger.info(Arrays.asList(topRatedMovies.getResults()).toString());
+		  return "index";
+	  }
+	  
+	  @GetMapping("/series/top")
+	  public String getTopRatedSeries() {
+		  TVSeriesSet topRatedSeries = consumeAPI.findTopRatedSeries();
+		  logger.info(Arrays.asList(topRatedSeries.getResults()).toString());
+		  return "index";
+	  }
+	  
+	  @GetMapping("/movie/{id}")
+	  public String getMovieById(@PathVariable(value = "id") Long id) {
+		  Movie movie = consumeAPI.findMovieById(id);
+		  logger.info(movie.toString());
+		  return "index";
+	  }
+	  
+	  @GetMapping("/tv/{id}")
+	  public String getSeriesById(@PathVariable(value = "id") Long id) {
+		  TVSeries tvSeries = consumeAPI.findSeriesById(id);
+		  logger.info(tvSeries.toString());
+		  return "index";
+	  }
+	 
 
 }
