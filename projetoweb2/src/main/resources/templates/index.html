@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Projeto Web II</title>
+	</head>
+	<body>
+		<h1>Projeto da Disciplina Desenvolvimento De Sistemas Web II</h1>
+			<label>Search Movie By Id:</label>
+			<input type="text" id="idMovie" value="Movie Id"/>
+			<a href='' onclick="this.href='/movie/'+document.getElementById('idMovie').value">Search</a>
+			<br>
+			<label>Search TV Series By Id:</label>
+			<input type="text" id="idSeries" value="TV Series Id"/>
+			<a href='' onclick="this.href='/series/'+document.getElementById('idSeries').value">Search</a>
+		<br>
+		<a href = "/series/popular">Show Most Popular TV Series</a>
+		<br>
+		<a href = "/movie/popular">Show Most Popular Movies</a>
+	</body>
+</html>
