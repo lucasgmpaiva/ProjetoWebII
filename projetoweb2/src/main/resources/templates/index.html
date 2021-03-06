@@ -6,19 +6,23 @@
 	</head>
 	<body>
 		<h1>Projeto da Disciplina Desenvolvimento De Sistemas Web II</h1>
-		<label>Search Movie By Id:</label>
-		<input type="text" id="idMovie"/>
-		<a href='' onclick="this.href='/movie/'+document.getElementById('idMovie').value">Search</a>
+		<form action="#" th:action="@{/movie/id}" method="post">
+			<h4>Search Movie By Id</h4>
+			<label>Id:</label>
+			<input type="text" name="id"/>
+			<input type="submit" value="Search"/>
+		</form>
 		<br>
 		<br>
-		<form action="#" th:action="@{/movie/search}" th:object="${movie}"method="post">
+		<form action="#" th:action="@{/movie/search}" method="post">
+			<h4>Search Movie By Title, Director Or Gender</h4>
 			<label>Title:</label>
-			<input type="text" th:field="*{title}" name="title"/>
+			<input type="text" name="title"/>
 			<label>Director:</label>
-			<input type="text" th:field="*{director}" name="director"/>
+			<input type="text" name="director"/>
 			<label>Gender:</label>
-			<input type="text" th:field="*{gender}" name="gender"/>
-			<button>Search</button>			
+			<input type="text" name="gender"/>
+			<input type="submit" value="Search"/>	
 		</form>
 		<br>
 		<br>
