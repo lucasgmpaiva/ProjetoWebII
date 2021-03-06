@@ -20,14 +20,18 @@
 				<thead>
 					<tr>
 						<th scope="col">Title</th>
-						<th scope="col">Overview</th>
+						<th scope="col">Director</th>
+						<th scope="col">Writer</th>
+						<th scope="col">Gender</th>
 						<th scope="col">Release Date</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr th:each="movie : ${movies}">
-						<td><p th:text="${movie.original_title}" /></td>
-						<td><p th:text="${movie.overview}" /></td>
+						<td><p th:text="${movie.title}" /></td>
+						<td><p th:text="${movie.director}" /></td>
+						<td><p th:text="${movie.writer}" /></td>
+						<td><p th:text="${movie.gender}" /></td>
 						<td><p th:text="${movie.release_date}" /></td>						
 					</tr>
 				</tbody>

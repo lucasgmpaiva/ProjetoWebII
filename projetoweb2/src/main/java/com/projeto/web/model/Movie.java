@@ -5,40 +5,64 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Movie {
 	
-	private Integer id;
-	private String original_title;
-	private String overview;
+	private Long id;
+	private String title;
+	private String director;
+	private String writer;
 	private String release_date;
+	private String gender;
 	
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	
+	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getOriginal_title() {
-		return original_title;
+	
+	public String getTitle() {
+		return title;
 	}
-	public void setOriginal_title(String original_title) {
-		this.original_title = original_title;
+	
+	public void setTitle(String title) {
+		this.title = title;
 	}
-	public String getOverview() {
-		return overview;
+	
+	public String getDirector() {
+		return director;
 	}
-	public void setOverview(String overview) {
-		this.overview = overview;
+	
+	public void setDirector(String director) {
+		this.director = director;
+	}
+	
+	public String getWriter() {
+		return writer;
+	}
+	
+	public void setWriters(String writer) {
+		this.writer = writer;
 	}
 	
 	public String getRelease_date() {
 		return release_date;
 	}
+	
 	public void setRelease_date(String release_date) {
 		this.release_date = release_date;
 	}
 	
+	public String getGender() {
+		return gender;
+	}
+	
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	
 	@Override
 	public String toString() {
-		return "Movie {" + "title = " + original_title + " / " + "Release Date: " + release_date + " / " + "overview = " + overview + "}";
+		return "Movie {" + "title = " + title + " / " + "Release Date: " + release_date + " / " + "Director = " + director + " / " + "Writer = " + writer + "}";
 	}
 
 }
